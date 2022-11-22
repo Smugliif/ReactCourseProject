@@ -1,25 +1,65 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes, Link, BrowserRouter as Router } from "react-router-dom";
+import React from "react";
+
+import "./App.css";
+
+import BernkastelViewComponent from "./BernkastelViewComponent";
+import LambdadeltaViewComponent from "./LambdadeltaViewComponent";
+import FetchAPI from "./API/FetchApi";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <div>
+                <nav>
+                    <ul>
+                        <li className="nav1">
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li className="nav2">
+                            <Link to="/Bernkastel">Calendar</Link>
+                        </li>
+                        <li className="nav3">
+                            <Link to="/Lambdadelta">TODO-list</Link>
+                        </li>
+                    </ul>
+                </nav>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <>
+                                <>
+                                    <br></br>
+                                    <h1>Foo</h1>
+                                </>
+                                <FetchAPI></FetchAPI>
+                            </>
+                        }
+                    />
+                    <Route
+                        path="/Bernkastel"
+                        element={<BernkastelViewComponent />}
+                    />
+                    <Route
+                        path="/Lambdadelta"
+                        element={<LambdadeltaViewComponent />}
+                    />
+                    <Route
+                        path="/Info"
+                        element={
+                            <>
+                                <h1>Info</h1>
+                            </>
+                        }
+                    />
+                </Routes>
+            </div>
+            <div style={{ textAlign: "center" }}>
+                <Link to="/Info">Info</Link>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
