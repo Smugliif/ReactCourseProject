@@ -2,6 +2,10 @@ body {
     font-family: "Times New Roman", Times, serif;
 }
 
+div {
+    padding-bottom: 20px;
+}
+
 h1 {
     text-align: center;
 }
@@ -23,6 +27,10 @@ ul {
 .nav3 {
     display: inline-block;
     width: 33%;
+    text-align: center;
+}
+
+.infoview {
     text-align: center;
 }
 

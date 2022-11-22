@@ -6,6 +6,7 @@ import "./App.css";
 import BernkastelViewComponent from "./BernkastelViewComponent";
 import LambdadeltaViewComponent from "./LambdadeltaViewComponent";
 import FetchAPI from "./API/FetchApi";
+import InfoView from "./Info";
 
 function App() {
     return (
@@ -45,14 +46,7 @@ function App() {
                         path="/Lambdadelta"
                         element={<LambdadeltaViewComponent />}
                     />
-                    <Route
-                        path="/Info"
-                        element={
-                            <>
-                                <h1>Info</h1>
-                            </>
-                        }
-                    />
+                    <Route path="/Info" element={<InfoView />} />
                 </Routes>
             </div>
             <div style={{ textAlign: "center" }}>
