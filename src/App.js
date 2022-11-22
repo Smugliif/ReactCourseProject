@@ -46,7 +46,7 @@ function App() {
                     <Route path="/info" element={<InfoView />} />
                 </Routes>
             </div>
-            <div style={{ textAlign: "center" }}>
+            <div className="infobutton">
                 <Link to="/info">Info</Link>
             </div>
         </Router>

@@ -34,6 +34,11 @@ ul {
     text-align: center;
 }
 
+.infobutton {
+    text-align: center;
+    background-color: lightblue;
+}
+
 .App {
     text-align: center;
 }
