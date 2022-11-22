@@ -3,8 +3,8 @@ import React from "react";
 
 import "./App.css";
 
-import BernkastelViewComponent from "./BernkastelViewComponent";
-import LambdadeltaViewComponent from "./LambdadeltaViewComponent";
+import Calendar from "./CalendarViewComponent";
+import LambdadeltaViewComponent from "./TodoViewComponent";
 import FetchAPI from "./API/FetchApi";
 import InfoView from "./Info";
 
@@ -18,10 +18,10 @@ function App() {
                             <Link to="/">Home</Link>
                         </li>
                         <li className="nav2">
-                            <Link to="/Bernkastel">Calendar</Link>
+                            <Link to="/calendar">Calendar</Link>
                         </li>
                         <li className="nav3">
-                            <Link to="/Lambdadelta">TODO-list</Link>
+                            <Link to="/todo">To Do-List</Link>
                         </li>
                     </ul>
                 </nav>
@@ -38,19 +38,16 @@ function App() {
                             </>
                         }
                     />
+                    <Route path="/calendar" element={<Calendar />} />
                     <Route
-                        path="/Bernkastel"
-                        element={<BernkastelViewComponent />}
-                    />
-                    <Route
-                        path="/Lambdadelta"
+                        path="/todo"
                         element={<LambdadeltaViewComponent />}
                     />
-                    <Route path="/Info" element={<InfoView />} />
+                    <Route path="/info" element={<InfoView />} />
                 </Routes>
             </div>
             <div style={{ textAlign: "center" }}>
-                <Link to="/Info">Info</Link>
+                <Link to="/info">Info</Link>
             </div>
         </Router>
     );
