@@ -3,10 +3,9 @@ import React from "react";
 
 import "./App.css";
 
-import Calendar from "./CalendarViewComponent";
-import LambdadeltaViewComponent from "./TodoViewComponent";
-import FetchAPI from "./API/FetchApi";
+import CalendarView from "./CalendarViewComponent";
 import InfoView from "./Info";
+import FetchAPI from "./API/FetchApi";
 
 function App() {
     return (
@@ -21,7 +20,7 @@ function App() {
                             <Link to="/calendar">Calendar</Link>
                         </li>
                         <li className="nav3">
-                            <Link to="/todo">To Do-List</Link>
+                            <Link to="/info">Info</Link>
                         </li>
                     </ul>
                 </nav>
@@ -38,16 +37,9 @@ function App() {
                             </>
                         }
                     />
-                    <Route path="/calendar" element={<Calendar />} />
-                    <Route
-                        path="/todo"
-                        element={<LambdadeltaViewComponent />}
-                    />
+                    <Route path="/calendar" element={<CalendarView />} />
                     <Route path="/info" element={<InfoView />} />
                 </Routes>
-            </div>
-            <div className="infobutton">
-                <Link to="/info">Info</Link>
             </div>
         </Router>
     );
