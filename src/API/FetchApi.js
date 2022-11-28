@@ -2,7 +2,7 @@ import React from "react";
 
 function FetchAPI() {
     const getAPI = () => {
-        fetch("https://jsonplaceholder.typicode.com/posts/1")
+        fetch("http://localhost:3010/tasks")
             .then((response) => response.json())
             .then((json) => console.log(json));
     };
