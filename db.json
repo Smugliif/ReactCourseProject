@@ -1,19 +1,43 @@
 {
-    "tasks": [
+    "contexts": [
         {
             "id": 1,
-            "name": "Code",
             "context": "Frontend course"
         },
         {
             "id": 2,
-            "name": "Clean",
             "context": "Chores"
         },
         {
             "id": 3,
-            "name": "Feed cat",
             "context": "Pets"
+        }
+    ],
+    "tasks": [
+        {
+            "id": 1,
+            "name": "Code",
+            "contextId": 1
+        },
+        {
+            "id": 2,
+            "name": "Clean",
+            "contextId": 2
+        },
+        {
+            "id": 3,
+            "name": "Feed cat",
+            "contextId": 3
+        },
+        {
+            "id": 4,
+            "name": "Kärsi reactista",
+            "contextId": 1
+        },
+        {
+            "id": 5,
+            "name": "Javaile",
+            "contextId": 1
         }
     ]
 }
