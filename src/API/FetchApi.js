@@ -15,8 +15,7 @@ function FetchAPI() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                id: 6,
-                name: "Javaile",
+                name: "Höö",
                 contextId: 1,
             }),
         })

@@ -30,14 +30,9 @@
             "contextId": 3
         },
         {
-            "id": 4,
-            "name": "Kärsi reactista",
-            "contextId": 1
-        },
-        {
-            "id": 5,
-            "name": "Javaile",
-            "contextId": 1
+            "name": "Höö",
+            "contextId": 1,
+            "id": 4
         }
     ]
 }
