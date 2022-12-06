@@ -11,14 +11,12 @@ import React, { useState, useEffect } from "react";
 
 //Get's API from db.json
 function FetchAPI() {
-    const [items, setItems] = useState([]);
-    let taskData = [];
+    const [tasks, setTasks] = useState([]);
     useEffect(() => {
         fetch("http://localhost:3010/tasks")
             .then((response) => response.json())
             .then((json) => {
-                console.log(json);
-                setItems(json);
+                setTasks(json);
             });
     }, []);
 
@@ -34,12 +32,21 @@ function FetchAPI() {
             .then((response) => response.json())
             .then((json) => console.log(json));
     };
-    console.log(items[1].id);
+    console.log(tasks);
 
     return (
         <>
             <h1>items</h1>
-            <li>{items[1].id}</li>
+            <div className="tasks">
+                {tasks.map((task) => {
+                    return (
+                        <div key={task.id}>
+                            <h1>{task.id}</h1>
+                            <h2>{task.name}</h2>
+                        </div>
+                    );
+                })}
+            </div>
         </>
     );
 }
