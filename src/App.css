@@ -1,5 +1,6 @@
 body {
     font-family: "Times New Roman", Times, serif;
+    background-color: white;
 }
 
 div {
@@ -31,6 +32,13 @@ ul {
 }
 
 .infoview {
+    text-align: center;
+}
+
+.tasks {
+}
+
+.task_item {
     text-align: center;
 }
 

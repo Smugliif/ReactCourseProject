@@ -2,15 +2,15 @@
     "contexts": [
         {
             "id": 1,
-            "context": "Frontend course"
+            "title": "Frontend course"
         },
         {
             "id": 2,
-            "context": "Chores"
+            "title": "Chores"
         },
         {
             "id": 3,
-            "context": "Pets"
+            "title": "Pets"
         }
     ],
     "tasks": [

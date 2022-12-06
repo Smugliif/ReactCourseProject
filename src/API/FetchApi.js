@@ -1,5 +1,6 @@
-//This is component is used to manage and retrieve information from
-//the db.json file which includes all the tasks data.
+//This is component is used to retrieve information from
+//the db.json file which includes all the tasks data. Additionally
+//this component displays the retrieved information.
 
 import React, { useState, useEffect } from "react";
 
@@ -12,11 +13,20 @@ import React, { useState, useEffect } from "react";
 //Get's API from db.json
 function FetchAPI() {
     const [tasks, setTasks] = useState([]);
+    const [contexts, setContexts] = useState([]);
     useEffect(() => {
         fetch("http://localhost:3010/tasks")
             .then((response) => response.json())
             .then((json) => {
                 setTasks(json);
+            });
+    }, []);
+
+    useEffect(() => {
+        fetch("http://localhost:3010/contexts")
+            .then((response) => response.json())
+            .then((json) => {
+                setContexts(json);
             });
     }, []);
 
@@ -32,7 +42,6 @@ function FetchAPI() {
             .then((response) => response.json())
             .then((json) => console.log(json));
     };
-    console.log(tasks);
 
     return (
         <>
@@ -40,10 +49,20 @@ function FetchAPI() {
             <div className="tasks">
                 {tasks.map((task) => {
                     return (
-                        <div key={task.id}>
-                            <h1>{task.id}</h1>
-                            <h2>{task.name}</h2>
-                        </div>
+                        <ul className="task_item" key={task.id}>
+                            <li>{task.id}</li>
+                            <li>{task.name}</li>
+                            {/* {console.log(Array.isArray(task.contextId))} */}
+                            {task.contextId.map((ids) => {
+                                return contexts.map((context) => {
+                                    if (ids === context.id) {
+                                        return (
+                                            <li key={ids}>{context.title}</li>
+                                        );
+                                    }
+                                });
+                            })}
+                        </ul>
                     );
                 })}
             </div>
