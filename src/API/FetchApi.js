@@ -1,15 +1,27 @@
 //This is component is used to manage and retrieve information from
 //the db.json file which includes all the tasks data.
 
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+// function Task(id, name, contextId) {
+//     this.id = id;
+//     this.name = name;
+//     this.contextId = contextId;
+// }
 
 //Get's API from db.json
 function FetchAPI() {
-    const getAPI = () => {
+    const [items, setItems] = useState([]);
+    let taskData = [];
+    useEffect(() => {
         fetch("http://localhost:3010/tasks")
             .then((response) => response.json())
-            .then((json) => console.log(json));
-    };
+            .then((json) => {
+                console.log(json);
+                setItems(json);
+            });
+    }, []);
+
     const postTest = () => {
         fetch("http://localhost:3010/tasks", {
             method: "POST",
@@ -22,13 +34,13 @@ function FetchAPI() {
             .then((response) => response.json())
             .then((json) => console.log(json));
     };
+    console.log(items[1].id);
 
     return (
-        <div>
-            My API <br />
-            <button onClick={getAPI}>Fetch API</button>
-            <button onClick={postTest}>Post</button>
-        </div>
+        <>
+            <h1>items</h1>
+            <li>{items[1].id}</li>
+        </>
     );
 }
 

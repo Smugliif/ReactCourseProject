@@ -37,7 +37,7 @@ function App() {
                                     <br></br>
                                     <ToDoComponent />
                                 </>
-                                <FetchAPI></FetchAPI>
+                                <FetchAPI />
                             </>
                         }
                     />

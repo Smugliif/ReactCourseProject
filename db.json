@@ -15,23 +15,23 @@
     ],
     "tasks": [
         {
-            "id": 1,
             "name": "Code",
-            "contextId": 1
+            "contextId": [1],
+            "id": 1
         },
         {
-            "id": 2,
             "name": "Clean",
-            "contextId": 2
+            "contextId": [2],
+            "id": 2
         },
         {
-            "id": 3,
             "name": "Feed cat",
-            "contextId": 3
+            "contextId": [3],
+            "id": 3
         },
         {
             "name": "Höö",
-            "contextId": 1,
+            "contextId": [1, 2],
             "id": 4
         }
     ]
