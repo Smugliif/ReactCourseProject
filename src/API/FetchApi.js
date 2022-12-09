@@ -4,43 +4,34 @@
 
 import React, { useState, useEffect } from "react";
 
-// function Task(id, name, contextId) {
-//     this.id = id;
-//     this.name = name;
-//     this.contextId = contextId;
-// }
-
 //Get's API from db.json
 function FetchAPI() {
     const [tasks, setTasks] = useState([]);
     const [contexts, setContexts] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:3010/tasks")
-            .then((response) => response.json())
-            .then((json) => {
-                setTasks(json);
-            });
+        const getApi = async () => {
+            const tasksFromServer = await fetchTasks();
+            const contextsFromServer = await fetchContexts();
+            setTasks(tasksFromServer);
+            setContexts(contextsFromServer);
+        };
+        getApi();
     }, []);
 
-    useEffect(() => {
-        fetch("http://localhost:3010/contexts")
-            .then((response) => response.json())
-            .then((json) => {
-                setContexts(json);
-            });
-    }, []);
+    //Gets the tasks from the API
+    const fetchTasks = async () => {
+        const response = await fetch("http://localhost:3010/tasks");
+        const data = await response.json();
+        console.log(data);
+        return data;
+    };
 
-    const postTest = () => {
-        fetch("http://localhost:3010/tasks", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                name: "Höö",
-                contextId: 1,
-            }),
-        })
-            .then((response) => response.json())
-            .then((json) => console.log(json));
+    //Gets the contexts from the API
+    const fetchContexts = async () => {
+        const response = await fetch("http://localhost:3010/contexts");
+        const data = await response.json();
+        console.log(data);
+        return data;
     };
 
     return (
