@@ -15,6 +15,9 @@ import ApiManager from "./API/ApiManager";
 function App() {
     const tasksUrl = "http://localhost:3010/tasks";
     const contextsUrl = "http://localhost:3010/contexts";
+
+    const dataPayload = { name: "MyTask", contextId: [1] }; //FOR TESTING ONLY
+
     const [tasks, setTasks] = useState([]);
     const [contexts, setContexts] = useState([]);
     useEffect(() => {
@@ -38,7 +41,23 @@ function App() {
         return data;
     };
 
-    // const postTask
+    //Send POST request to API with data
+    const postData = async (url, data) => {
+        await fetch(`${url}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+        });
+    };
+
+    //Delete selected data
+    const deleteData = async (url, id) => {
+        if (window.confirm("Are you sure you want to delete this task?")) {
+            await fetch(`${url}/${id}`, { method: "DELETE" }).then(
+                window.alert("Deleted")
+            );
+        }
+    };
 
     return (
         <Router>
@@ -67,6 +86,20 @@ function App() {
                                 </>
                                 <Tasks tasks={tasks} contexts={contexts} />
                                 <ApiManager />
+                                <button
+                                    onClick={() => {
+                                        deleteData(tasksUrl, 3);
+                                    }}
+                                >
+                                    Delete 5
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        postData(tasksUrl, dataPayload);
+                                    }}
+                                >
+                                    Post data
+                                </button>
                             </>
                         }
                     />
