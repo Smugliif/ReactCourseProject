@@ -14,23 +14,28 @@ import React from "react";
 // };
 // // postTest();
 
-const deleteTask = ({ id }) => {
+const DeleteTask = ({ id }) => {
     //TODO make number check
     if (isNaN(id)) {
         console.log("Input is not a number");
+    } else {
+        console.log(id);
     }
-    fetch(`http://localhost:3010/tasks/${id}`, {
-        method: "DELETE",
-    })
-        .then((response) => response.json())
-        .then((json) => console.log(json));
-
-    return (
-        <>
-        <h3>apua</h3>
-            <button onClick={deleteTask(5)}>Delete 5</button>
-        </>
-    );
 };
 
-export default deleteTask;
+// fetch(`http://localhost:3010/tasks/${id}`, {
+//     method: "DELETE",
+// })
+//     .then((response) => response.json())
+//     .then((json) => console.log(json));
+
+function ApiManager() {
+    return (
+        <>
+            <h3>apua</h3>
+            <DeleteTask id={2} />
+        </>
+    );
+}
+
+export default ApiManager;

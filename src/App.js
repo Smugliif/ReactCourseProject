@@ -7,11 +7,10 @@ import CalendarView from "./CalendarViewComponent";
 import ToDoComponent from "./TodoViewComponent";
 import InfoView from "./Info";
 import Tasks from "./Components/Tasks";
-import FetchAPI from "./API/FetchApi";
 import ApiManager from "./API/ApiManager";
 
 //This is the main .js file and is used to setup the general layout of all
-//pages and then to display all the view components.
+//pages and then to render all the view components.
 
 function App() {
     const [tasks, setTasks] = useState([]);
@@ -68,7 +67,7 @@ function App() {
                                     <ToDoComponent />
                                 </>
                                 <Tasks tasks={tasks} contexts={contexts} />
-                                
+                                <ApiManager />
                             </>
                         }
                     />
