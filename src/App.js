@@ -13,33 +13,32 @@ import ApiManager from "./API/ApiManager";
 //pages and then to render all the view components.
 
 function App() {
+    const tasksUrl = "http://localhost:3010/tasks";
+    const contextsUrl = "http://localhost:3010/contexts";
     const [tasks, setTasks] = useState([]);
     const [contexts, setContexts] = useState([]);
     useEffect(() => {
         const getApi = async () => {
-            const tasksFromServer = await fetchTasks();
-            const contextsFromServer = await fetchContexts();
+            const tasksFromServer = await fetchData(tasksUrl);
+            const contextsFromServer = await fetchData(contextsUrl);
             setTasks(tasksFromServer);
             setContexts(contextsFromServer);
         };
         getApi();
     }, []);
 
-    //Gets the tasks from the API
-    const fetchTasks = async () => {
-        const response = await fetch("http://localhost:3010/tasks");
+    //Get the data from given API
+    const fetchData = async (url) => {
+        if (!url) {
+            return console.log("No url given!");
+        }
+        const response = await fetch(url);
         const data = await response.json();
         console.log(data);
         return data;
     };
 
-    //Gets the contexts from the API
-    const fetchContexts = async () => {
-        const response = await fetch("http://localhost:3010/contexts");
-        const data = await response.json();
-        console.log(data);
-        return data;
-    };
+    // const postTask
 
     return (
         <Router>

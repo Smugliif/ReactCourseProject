@@ -40,4 +40,6 @@ ul {
 
 .task_item {
     text-align: center;
+    background-color: lightgray;
+    margin: 0.3em;
 }
