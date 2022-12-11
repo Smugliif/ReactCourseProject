@@ -6,8 +6,8 @@ const Tasks = ({ tasks, contexts, deleteData }) => {
         <div className="tasks">
             {tasks.map((task) => {
                 return (
-                    <div className="task_block">
-                        <Task key={task.id} task={task} contexts={contexts} />
+                    <div key={task.id} className="task_block">
+                        <Task task={task} contexts={contexts} />
                         <button
                             onClick={() =>
                                 deleteData(

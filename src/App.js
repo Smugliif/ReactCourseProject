@@ -57,6 +57,8 @@ function App() {
             await fetch(`${url}/${id}`, { method: "DELETE" }).then(
                 window.alert(`Deleted ${tasks[id - 1].name}`)
             );
+            const newTasks = await tasks.filter((task) => task.id !== id);
+            await setTasks(newTasks);
         }
     };
 
@@ -85,11 +87,13 @@ function App() {
                                     <br></br>
                                     <ToDoComponent />
                                 </>
-                                <Tasks
-                                    tasks={tasks}
-                                    contexts={contexts}
-                                    deleteData={deleteData}
-                                />
+                                {tasks && contexts && (
+                                    <Tasks
+                                        tasks={tasks}
+                                        contexts={contexts}
+                                        deleteData={deleteData}
+                                    />
+                                )}
                                 <ApiManager />
                                 <button
                                     onClick={() => {
