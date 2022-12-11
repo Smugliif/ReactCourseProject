@@ -36,10 +36,18 @@ ul {
 }
 
 .tasks {
+    background-color: lightblue;
+    padding: 0.2em;
+}
+
+.task_block {
+    text-align: center;
+    background-color: cornsilk;
+    margin: 0.2em;
+    padding: 0.1em;
 }
 
 .task_item {
-    text-align: center;
-    background-color: lightgray;
-    margin: 0.3em;
+    margin: 0.2em;
+    padding: 0.1em;
 }

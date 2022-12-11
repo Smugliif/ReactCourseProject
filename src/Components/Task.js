@@ -2,7 +2,7 @@ import React from "react";
 
 const Task = ({ task, contexts }) => {
     return (
-        <div>
+        <>
             <ul className="task_item">
                 <li>{task.id}</li>
                 <li>{task.name}</li>
@@ -15,7 +15,7 @@ const Task = ({ task, contexts }) => {
                 })}
                 {/* {console.log(Array.isArray(task.contextId))} */}
             </ul>
-        </div>
+        </>
     );
 };
 

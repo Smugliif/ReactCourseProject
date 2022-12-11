@@ -20,6 +20,7 @@ function App() {
 
     const [tasks, setTasks] = useState([]);
     const [contexts, setContexts] = useState([]);
+
     useEffect(() => {
         const getApi = async () => {
             const tasksFromServer = await fetchData(tasksUrl);
@@ -54,7 +55,7 @@ function App() {
     const deleteData = async (url, id) => {
         if (window.confirm("Are you sure you want to delete this task?")) {
             await fetch(`${url}/${id}`, { method: "DELETE" }).then(
-                window.alert("Deleted")
+                window.alert(`Deleted ${tasks[id - 1].name}`)
             );
         }
     };
@@ -84,15 +85,12 @@ function App() {
                                     <br></br>
                                     <ToDoComponent />
                                 </>
-                                <Tasks tasks={tasks} contexts={contexts} />
+                                <Tasks
+                                    tasks={tasks}
+                                    contexts={contexts}
+                                    deleteData={deleteData}
+                                />
                                 <ApiManager />
-                                <button
-                                    onClick={() => {
-                                        deleteData(tasksUrl, 3);
-                                    }}
-                                >
-                                    Delete 5
-                                </button>
                                 <button
                                     onClick={() => {
                                         postData(tasksUrl, dataPayload);
