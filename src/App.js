@@ -7,6 +7,7 @@ import CalendarView from "./CalendarViewComponent";
 import ToDoComponent from "./TodoViewComponent";
 import InfoView from "./Info";
 import Tasks from "./Components/Tasks";
+import Form from "./Components/Form";
 import ApiManager from "./API/ApiManager";
 
 //This is the main .js file and is used to setup the general layout of all
@@ -15,8 +16,6 @@ import ApiManager from "./API/ApiManager";
 function App() {
     const tasksUrl = "http://localhost:3010/tasks";
     const contextsUrl = "http://localhost:3010/contexts";
-
-    const dataPayload = { name: "MyTask", contextId: [1] }; //FOR TESTING ONLY
 
     const [tasks, setTasks] = useState([]);
     const [contexts, setContexts] = useState([]);
@@ -43,7 +42,18 @@ function App() {
     };
 
     //Send POST request to API with data
-    const postData = async (url, data) => {
+    const postData = async (url) => {
+        const name = prompt("Give your new task a name:");
+        const promptContexts = prompt(
+            "Give a context to the task,if multiple separate by commas (,):"
+        );
+        const separatedContexts = await promptContexts.split(",");
+        console.log(separatedContexts);
+        const taskContexts = await separatedContexts.map((context) =>
+            Number(context)
+        );
+        console.log(taskContexts);
+        const data = { name, taskContexts };
         await fetch(`${url}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -51,12 +61,26 @@ function App() {
         });
     };
 
+    //Edit existing data using a PUT request
+    const putData = async (url, id, data) => {
+        await fetch(`${url}/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+        });
+        const newTasks = await tasks.filter((task) => task.id !== id);
+        await setTasks(newTasks);
+    };
+
     //Delete selected data
     const deleteData = async (url, id) => {
-        if (window.confirm("Are you sure you want to delete this task?")) {
-            await fetch(`${url}/${id}`, { method: "DELETE" }).then(
-                window.alert(`Deleted ${tasks[id - 1].name}`)
-            );
+        if (
+            window.confirm(
+                `Are you sure you want to delete ${tasks[id - 1].name}?`
+            )
+        ) {
+            await fetch(`${url}/${id}`, { method: "DELETE" });
+            await window.alert(`Task deleted!`);
             const newTasks = await tasks.filter((task) => task.id !== id);
             await setTasks(newTasks);
         }
@@ -65,7 +89,7 @@ function App() {
     return (
         <Router>
             <div>
-                <nav>
+                <nav className="nav_menu">
                     <ul>
                         <li className="nav1">
                             <Link to="/">Home</Link>
@@ -92,16 +116,18 @@ function App() {
                                         tasks={tasks}
                                         contexts={contexts}
                                         deleteData={deleteData}
+                                        putData={putData}
                                     />
                                 )}
-                                <ApiManager />
+                                <Form />
                                 <button
                                     onClick={() => {
-                                        postData(tasksUrl, dataPayload);
+                                        postData(tasksUrl);
                                     }}
                                 >
-                                    Post data
+                                    post new task
                                 </button>
+                                <ApiManager />
                             </>
                         }
                     />
