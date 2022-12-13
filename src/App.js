@@ -49,6 +49,7 @@ function App() {
         });
     };
 
+    //Handles POST request content for tasks
     const handleTaskPost = async (url) => {
         const name = prompt("Give your new task a name:");
         const promptContexts = prompt(
@@ -67,6 +68,7 @@ function App() {
         await setTasks(newTasks);
     };
 
+    //Handles POST request content for contexts
     const handleContextPost = async (url) => {
         const title = await prompt("Give the name for your context.");
         if (!title) {
