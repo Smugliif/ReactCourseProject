@@ -24,8 +24,8 @@ function App() {
         const getApi = async () => {
             const tasksFromServer = await fetchData(tasksUrl);
             const contextsFromServer = await fetchData(contextsUrl);
-            setTasks(tasksFromServer);
-            setContexts(contextsFromServer);
+            await setTasks(tasksFromServer);
+            await setContexts(contextsFromServer);
         };
         getApi();
     }, []);
@@ -37,28 +37,44 @@ function App() {
         }
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
         return data;
     };
 
     //Send POST request to API with data
-    const postData = async (url) => {
-        const name = prompt("Give your new task a name:");
-        const promptContexts = prompt(
-            "Give a context to the task,if multiple separate by commas (,):"
-        );
-        const separatedContexts = await promptContexts.split(",");
-        console.log(separatedContexts);
-        const taskContexts = await separatedContexts.map((context) =>
-            Number(context)
-        );
-        console.log(taskContexts);
-        const data = { name, taskContexts };
+    const postData = async (url, data) => {
         await fetch(`${url}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
         });
+    };
+
+    const handleTaskPost = async (url) => {
+        const name = prompt("Give your new task a name:");
+        const promptContexts = prompt(
+            "Give a context to the task,if multiple separate by commas (,):"
+        );
+        if (!name | !promptContexts) {
+            return alert("No empty fields allowed. Please, give valid inputs.");
+        }
+        const separatedContexts = await promptContexts.split(",");
+        const taskContexts = await separatedContexts.map((context) =>
+            Number(context)
+        );
+        const data = await { name, taskContexts };
+        await postData(url, data);
+        const newTasks = await fetchData(url);
+        await setTasks(newTasks);
+    };
+
+    const handleContextPost = async (url) => {
+        const title = await prompt("Give the name for your context.");
+        if (!title) {
+            return alert("Context name can't be empty!");
+        }
+        await postData(url, { title });
+        const newContexts = await fetchData(url);
+        setContexts(newContexts);
     };
 
     //Edit existing data using a PUT request
@@ -68,7 +84,7 @@ function App() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
         });
-        const newTasks = await tasks.filter((task) => task.id !== id);
+        const newTasks = await fetchData(url);
         await setTasks(newTasks);
     };
 
@@ -80,7 +96,6 @@ function App() {
             )
         ) {
             await fetch(`${url}/${id}`, { method: "DELETE" });
-            await window.alert(`Task deleted!`);
             const newTasks = await tasks.filter((task) => task.id !== id);
             await setTasks(newTasks);
         }
@@ -122,10 +137,17 @@ function App() {
                                 <Form />
                                 <button
                                     onClick={() => {
-                                        postData(tasksUrl);
+                                        handleTaskPost(tasksUrl);
                                     }}
                                 >
                                     post new task
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        handleContextPost(contextsUrl);
+                                    }}
+                                >
+                                    post new context
                                 </button>
                                 <ApiManager />
                             </>
