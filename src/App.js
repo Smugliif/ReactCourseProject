@@ -9,6 +9,7 @@ import InfoView from "./Info";
 import Tasks from "./Components/Tasks";
 import Form from "./Components/Form";
 import ApiManager from "./API/ApiManager";
+import Contexts from "./Components/Contexts";
 
 //This is the main .js file and is used to setup the general layout of all
 //pages and then to render all the view components.
@@ -136,7 +137,8 @@ function App() {
                                         putData={putData}
                                     />
                                 )}
-                                <Form />
+                                <Contexts contexts={contexts} />
+                                <Form /> {/*TODO Evaluate need for Form*/}
                                 <button
                                     onClick={() => {
                                         handleTaskPost(tasksUrl);
@@ -151,7 +153,7 @@ function App() {
                                 >
                                     post new context
                                 </button>
-                                <ApiManager />
+                                <ApiManager /> {/*TODO Delete ApiManager*/}
                             </>
                         }
                     />
