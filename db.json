@@ -15,10 +15,6 @@
     {
       "title": "Make films",
       "id": 4
-    },
-    {
-      "title": "GoGo",
-      "id": 5
     }
   ],
   "tasks": [
@@ -57,13 +53,6 @@
         1
       ],
       "id": 5
-    },
-    {
-      "name": "Act",
-      "taskContexts": [
-        4
-      ],
-      "id": 6
     }
   ]
 }

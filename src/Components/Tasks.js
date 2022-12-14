@@ -1,9 +1,7 @@
 import React from "react";
 import Task from "./Task";
 
-const Tasks = ({ tasks, contexts, deleteData, putData }) => {
-    const tasksUrl = "http://localhost:3010/tasks";
-
+const Tasks = ({ tasks, contexts, url, handleDelete, putData }) => {
     const handlePut = async (id) => {
         const name = await prompt("Give task name, please:");
         const promptContexts = await prompt(
@@ -18,7 +16,7 @@ const Tasks = ({ tasks, contexts, deleteData, putData }) => {
         );
         console.log(contexts[0]);
         const data = await { name, taskContexts };
-        await putData(tasksUrl, id, data);
+        await putData(url, id, data);
     };
 
     return (
@@ -27,7 +25,7 @@ const Tasks = ({ tasks, contexts, deleteData, putData }) => {
                 return (
                     <div key={task.id} className="task_block">
                         <Task task={task} contexts={contexts} />
-                        <button onClick={() => deleteData(tasksUrl, task.id)}>
+                        <button onClick={() => handleDelete(url, task.id)}>
                             delete task
                         </button>
                         <button onClick={() => handlePut(task.id)}>edit</button>

@@ -92,15 +92,30 @@ function App() {
     };
 
     //Delete selected data
-    const deleteData = async (url, id) => {
-        if (
-            window.confirm(
-                `Are you sure you want to delete ${tasks[id - 1].name}?`
-            )
-        ) {
-            await fetch(`${url}/${id}`, { method: "DELETE" });
-            const newTasks = await tasks.filter((task) => task.id !== id);
-            await setTasks(newTasks);
+    const handleDelete = async (url, id) => {
+        if (url === tasksUrl) {
+            if (
+                window.confirm(
+                    `Are you sure you want to delete ${tasks[id - 1].name}?`
+                )
+            ) {
+                await fetch(`${url}/${id}`, { method: "DELETE" });
+                const newTasks = await tasks.filter((task) => task.id !== id);
+                await setTasks(newTasks);
+            }
+        }
+        if (url === contextsUrl) {
+            if (
+                window.confirm(
+                    `Are you sure you want to delete ${contexts[id - 1].title}?`
+                )
+            ) {
+                await fetch(`${url}/${id}`, { method: "DELETE" });
+                const newContexts = await contexts.filter(
+                    (context) => context.id !== id
+                );
+                await setTasks(newContexts);
+            }
         }
     };
 
@@ -133,11 +148,16 @@ function App() {
                                     <Tasks
                                         tasks={tasks}
                                         contexts={contexts}
-                                        deleteData={deleteData}
+                                        url={tasksUrl}
+                                        handleDelete={handleDelete}
                                         putData={putData}
                                     />
                                 )}
-                                <Contexts contexts={contexts} />
+                                <Contexts
+                                    contexts={contexts}
+                                    url={contextsUrl}
+                                    handleDelete={handleDelete}
+                                />
                                 <Form /> {/*TODO Evaluate need for Form*/}
                                 <button
                                     onClick={() => {
