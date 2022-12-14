@@ -16,11 +16,11 @@ import React from "react";
 
 const DeleteTask = ({ id }) => {
     //TODO make number check
-    if (isNaN(id)) {
-        console.log("Input is not a number");
-    } else {
-        console.log(id);
-    }
+    // if (isNaN(id)) {
+    //     console.log("Input is not a number");
+    // } else {
+    //     console.log(id);
+    // }
 };
 
 // fetch(`http://localhost:3010/tasks/${id}`, {
