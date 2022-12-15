@@ -3,15 +3,11 @@ import React from "react";
 const Task = ({ task, contexts }) => {
     return (
         <>
-            <ul className="task_item">
+            <ul className="taskitem">
                 <li>{task.id}</li>
                 <li>{task.name}</li>
                 {task.taskContexts.map((taskId) => {
-                    return contexts.map((context) => {
-                        if (taskId === context.id) {
-                            return <li key={taskId}>{context.title}</li>;
-                        }
-                    });
+                    return <li key={taskId}>{contexts[taskId - 1].title}</li>;
                 })}
                 {/* {console.log(Array.isArray(task.contextId))} */}
             </ul>

@@ -40,14 +40,14 @@ ul {
     padding: 0.2em;
 }
 
-.task_block {
+.task-block {
     text-align: center;
     background-color: cornsilk;
     margin: 0.2em;
     padding: 0.1em;
 }
 
-.task_item {
+.task-item {
     margin: 0.2em;
     padding: 0.1em;
 }

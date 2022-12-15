@@ -23,7 +23,7 @@ const Tasks = ({ tasks, contexts, url, handleDelete, putData }) => {
         <div className="tasks">
             {tasks.map((task) => {
                 return (
-                    <div key={task.id} className="task_block">
+                    <div key={task.id} className="task-block">
                         <Task task={task} contexts={contexts} />
                         <button onClick={() => handleDelete(url, task.id)}>
                             delete task

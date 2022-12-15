@@ -1,11 +1,16 @@
 const Contexts = ({ contexts, url, handleDelete }) => {
     return (
-        <ul className="context_list">
+        <ul className="context-list">
             {contexts.map((context) => {
                 return (
-                    <li key={context.id}>
-                        {context.id}: {context.title}
-                    </li>
+                    <div className="context-item" key={context.id}>
+                        <li>
+                            {context.id}: {context.title}
+                        </li>
+                        <button onClick={() => handleDelete(url, context.id)}>
+                            Delete
+                        </button>
+                    </div>
                 );
             })}
         </ul>
@@ -13,8 +18,3 @@ const Contexts = ({ contexts, url, handleDelete }) => {
 };
 
 export default Contexts;
-
-/* <button onClick={() => handleDelete(url, context.id)}>
-                            Delete
-                        </button>
-                        TODO Make not crash */

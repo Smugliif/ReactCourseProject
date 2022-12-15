@@ -114,7 +114,7 @@ function App() {
                 const newContexts = await contexts.filter(
                     (context) => context.id !== id
                 );
-                await setTasks(newContexts);
+                await setContexts(newContexts);
             }
         }
     };
@@ -122,7 +122,7 @@ function App() {
     return (
         <Router>
             <div>
-                <nav className="nav_menu">
+                <nav className="nav-menu">
                     <ul>
                         <li className="nav1">
                             <Link to="/">Home</Link>
@@ -153,11 +153,13 @@ function App() {
                                         putData={putData}
                                     />
                                 )}
-                                <Contexts
-                                    contexts={contexts}
-                                    url={contextsUrl}
-                                    handleDelete={handleDelete}
-                                />
+                                {contexts && (
+                                    <Contexts
+                                        contexts={contexts}
+                                        url={contextsUrl}
+                                        handleDelete={handleDelete}
+                                    />
+                                )}
                                 <Form /> {/*TODO Evaluate need for Form*/}
                                 <button
                                     onClick={() => {
