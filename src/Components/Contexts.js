@@ -3,14 +3,14 @@ const Contexts = ({ contexts, url, handleDelete }) => {
         <ul className="context-list">
             {contexts.map((context) => {
                 return (
-                    <div className="context-item" key={context.id}>
+                    <ul className="context-item" key={context.id}>
                         <li>
                             {context.id}: {context.title}
                         </li>
                         <button onClick={() => handleDelete(url, context.id)}>
                             Delete
                         </button>
-                    </div>
+                    </ul>
                 );
             })}
         </ul>
