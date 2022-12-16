@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 
 import CalendarView from "./CalendarViewComponent";
-import ToDoComponent from "./TodoViewComponent";
 import InfoView from "./Info";
 import Tasks from "./Components/Tasks";
 import Form from "./Components/Form";
@@ -143,7 +142,9 @@ function App() {
                             <>
                                 <>
                                     <br></br>
-                                    <ToDoComponent />
+                                    <div>
+                                        <h1>34</h1>
+                                    </div>
                                 </>
                                 {tasks && contexts && (
                                     <Tasks
