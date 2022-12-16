@@ -52,8 +52,7 @@ function App() {
 
     //Handles POST request content for tasks
     const handleTaskPost = async (url) => {
-        const nameInput = prompt("Give your new task a name:");
-        const name = nameInput.charAt(0).toUpperCase() + nameInput.slice(1);
+        const name = prompt("Give your new task a name:");
         const promptContexts = prompt(
             "Give the task a context by id number, if multiple separate by commas (,):"
         );
