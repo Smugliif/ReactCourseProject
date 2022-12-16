@@ -5,7 +5,7 @@ const Tasks = ({ tasks, contexts, url, handleDelete, putData }) => {
     const handlePut = async (id) => {
         const name = await prompt("Give task name, please:");
         const promptContexts = await prompt(
-            "Give task contexts, if multiple, separate by commas (,):"
+            "Give the task's contexts by id, if multiple, separate by commas (,):"
         );
         if (!name | !promptContexts) {
             return alert("No empty fields allowed. Please, give valid inputs.");
@@ -14,7 +14,6 @@ const Tasks = ({ tasks, contexts, url, handleDelete, putData }) => {
         const taskContexts = separatedContexts.map((context) =>
             Number(context)
         );
-        console.log(contexts[0]);
         const data = await { name, taskContexts };
         await putData(url, id, data);
     };

@@ -52,17 +52,18 @@ function App() {
 
     //Handles POST request content for tasks
     const handleTaskPost = async (url) => {
-        const name = prompt("Give your new task a name:");
+        const nameInput = prompt("Give your new task a name:");
+        const name = nameInput.charAt(0).toUpperCase() + nameInput.slice(1);
         const promptContexts = prompt(
-            "Give a context to the task,if multiple separate by commas (,):"
+            "Give the task a context by id number, if multiple separate by commas (,):"
         );
         if (!name | !promptContexts) {
             return alert("No empty fields allowed. Please, give valid inputs.");
         }
         const separatedContexts = await promptContexts.split(",");
-        const taskContexts = await separatedContexts.map((context) =>
-            Number(context)
-        );
+        const taskContexts = await separatedContexts.map((context) => {
+            return Number(context);
+        });
         const data = await { name, taskContexts };
         await postData(url, data);
         const newTasks = await fetchData(url);
@@ -71,10 +72,12 @@ function App() {
 
     //Handles POST request content for contexts
     const handleContextPost = async (url) => {
-        const title = await prompt("Give the name for your context.");
-        if (!title) {
+        const input = await prompt("Give the name for your context.");
+        if (!input) {
             return alert("Context name can't be empty!");
         }
+        //Make input uppercase
+        const title = input.charAt(0).toUpperCase() + input.slice(1);
         await postData(url, { title });
         const newContexts = await fetchData(url);
         setContexts(newContexts);
