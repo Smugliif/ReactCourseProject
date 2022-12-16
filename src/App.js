@@ -8,7 +8,6 @@ import ToDoComponent from "./TodoViewComponent";
 import InfoView from "./Info";
 import Tasks from "./Components/Tasks";
 import Form from "./Components/Form";
-import ApiManager from "./API/ApiManager";
 import Contexts from "./Components/Contexts";
 
 //This is the main .js file and is used to setup the general layout of all
@@ -177,7 +176,6 @@ function App() {
                                 >
                                     post new context
                                 </button>
-                                <ApiManager /> {/*TODO Delete ApiManager*/}
                             </>
                         }
                     />

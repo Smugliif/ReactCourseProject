@@ -9,7 +9,13 @@ function InfoView() {
                 Every image on this site is provided by the creator of this
                 site.
             </p>
-            <p>User guide will go here:</p>
+            <h3>Guide:</h3>
+            <ul>
+                <li>
+                    This site is used to make a list of tasks. To add them press
+                    the button on the home page.
+                </li>
+            </ul>
         </div>
     );
 }
