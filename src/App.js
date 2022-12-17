@@ -112,11 +112,26 @@ function App() {
                     `Are you sure you want to delete ${contexts[id - 1].title}?`
                 )
             ) {
-                await fetch(`${url}/${id}`, { method: "DELETE" });
-                const newContexts = await contexts.filter(
-                    (context) => context.id !== id
-                );
-                await setContexts(newContexts);
+                const isInUse = () => {
+                    for (let i = 0; i < tasks.length; i++) {
+                        for (let l = 0; l < tasks[i].taskContexts.length; l++) {
+                            if (tasks[i].taskContexts[l] === id) {
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+                };
+                const useCheck = await isInUse();
+                if (!useCheck) {
+                    await fetch(`${url}/${id}`, { method: "DELETE" });
+                    const newContexts = await contexts.filter(
+                        (context) => context.id !== id
+                    );
+                    await setContexts(newContexts);
+                } else {
+                    alert("The context you want to delete is in use!");
+                }
             }
         }
     };
