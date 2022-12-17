@@ -51,3 +51,37 @@ ul {
     margin: 0.2em;
     padding: 0.1em;
 }
+
+.contexts {
+    text-align: center;
+}
+
+.buttons {
+    text-align: center;
+}
+
+.button-1 {
+    background-color: #ea4c89;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    width: 40%;
+    line-height: 20px;
+    margin: 10px;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    transition: color 100ms;
+    text-transform: uppercase;
+}
+
+.button-1:hover,
+.button-1:focus {
+    background-color: #f082ac;
+}

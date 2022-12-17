@@ -136,16 +136,35 @@ function App() {
                     </ul>
                 </nav>
                 <Routes>
+                    {/*Homepage*/}
                     <Route
                         path="/"
                         element={
                             <>
                                 <>
                                     <br></br>
-                                    <div>
-                                        <h1>34</h1>
+                                    <div className="header">
+                                        <h1>Tasks</h1>
                                     </div>
                                 </>
+                                <div className="buttons">
+                                    <button
+                                        className="button-1"
+                                        onClick={() => {
+                                            handleTaskPost(tasksUrl);
+                                        }}
+                                    >
+                                        NEW TASK
+                                    </button>
+                                    <button
+                                        className="button-1"
+                                        onClick={() => {
+                                            handleContextPost(contextsUrl);
+                                        }}
+                                    >
+                                        NEW CONTEXT
+                                    </button>
+                                </div>
                                 {tasks && contexts && (
                                     <Tasks
                                         tasks={tasks}
@@ -155,32 +174,22 @@ function App() {
                                         putData={putData}
                                     />
                                 )}
-                                {contexts && (
-                                    <Contexts
-                                        contexts={contexts}
-                                        url={contextsUrl}
-                                        handleDelete={handleDelete}
-                                    />
-                                )}
-                                <Form /> {/*TODO Evaluate need for Form*/}
-                                <button
-                                    onClick={() => {
-                                        handleTaskPost(tasksUrl);
-                                    }}
-                                >
-                                    post new task
-                                </button>
-                                <button
-                                    onClick={() => {
-                                        handleContextPost(contextsUrl);
-                                    }}
-                                >
-                                    post new context
-                                </button>
+                                <div className="contexts">
+                                    <h1>Context List</h1>
+                                    {contexts && (
+                                        <Contexts
+                                            contexts={contexts}
+                                            url={contextsUrl}
+                                            handleDelete={handleDelete}
+                                        />
+                                    )}
+                                </div>
                             </>
                         }
                     />
+                    {/*Calendar View*/}
                     <Route path="/calendar" element={<CalendarView />} />
+                    {/*Info View*/}
                     <Route path="/info" element={<InfoView />} />
                 </Routes>
             </div>
