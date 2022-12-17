@@ -93,6 +93,7 @@ function App() {
 
     //Delete selected data
     const handleDelete = async (url, id) => {
+        //If tasks are being deleted
         if (url === tasksUrl) {
             if (
                 window.confirm(
@@ -104,6 +105,7 @@ function App() {
                 await setTasks(newTasks);
             }
         }
+        //If contexts are being deleted
         if (url === contextsUrl) {
             if (
                 window.confirm(
