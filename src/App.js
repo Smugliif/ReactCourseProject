@@ -6,7 +6,6 @@ import "./App.css";
 import CalendarView from "./CalendarViewComponent";
 import InfoView from "./Info";
 import Tasks from "./Components/Tasks";
-import Form from "./Components/Form";
 import Contexts from "./Components/Contexts";
 
 //This is the main .js file and is used to setup the general layout of all
