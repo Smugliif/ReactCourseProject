@@ -6,6 +6,8 @@ const Task = ({ task, contexts }) => {
             <ul className="taskitem">
                 <li>{task.id}</li>
                 <li>{task.name}</li>
+                <br></br>
+                <li>Contexts:</li>
                 {task.taskContexts.map((taskId) => {
                     return <li key={taskId}>{contexts[taskId - 1].title}</li>;
                 })}

@@ -18,9 +18,10 @@ function InfoView() {
                 </li>
                 <li>
                     To add new contexts or tasks you can do so by pressing the
-                    buttons at the bottom of the page and following the
-                    instructions
+                    buttons at the top of the home page and following the
+                    instructions.
                 </li>
+                <li>Contexts are added to tasks with their id.</li>
             </ul>
         </div>
     );

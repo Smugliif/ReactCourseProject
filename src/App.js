@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 import "./App.css";
 
-import CalendarView from "./CalendarViewComponent";
+import CalendarView from "./FunViewComponent";
 import InfoView from "./Info";
 import Tasks from "./Components/Tasks";
 import Contexts from "./Components/Contexts";
@@ -12,12 +12,15 @@ import Contexts from "./Components/Contexts";
 //pages and then to render all the view components.
 
 function App() {
+    //API URLs used:
     const tasksUrl = "http://localhost:3010/tasks";
     const contextsUrl = "http://localhost:3010/contexts";
 
+    //The tasks and contexts from the API are set here for the app to use:
     const [tasks, setTasks] = useState([]);
     const [contexts, setContexts] = useState([]);
 
+    //Runs every time the page renders:
     useEffect(() => {
         const getApi = async () => {
             const tasksFromServer = await fetchData(tasksUrl);
@@ -31,7 +34,7 @@ function App() {
     //Get the data from given API
     const fetchData = async (url) => {
         if (!url) {
-            return console.log("No url given!");
+            throw new Error(alert("No url given!"));
         }
         const response = await fetch(url);
         const data = await response.json();
@@ -58,7 +61,11 @@ function App() {
         }
         const separatedContexts = await promptContexts.split(",");
         const taskContexts = await separatedContexts.map((context) => {
-            return Number(context);
+            const index = Number(context);
+            if (!Number.isInteger(index)) {
+                throw new Error(alert("Give a number please."));
+            }
+            return index;
         });
         const data = await { name, taskContexts };
         await postData(url, data);
@@ -70,9 +77,9 @@ function App() {
     const handleContextPost = async (url) => {
         const input = await prompt("Give the name for your context.");
         if (!input) {
-            return alert("Context name can't be empty!");
+            throw new Error(alert("Context name can't be empty!"));
         }
-        //Make input uppercase
+        //Make input's first letter uppercase
         const title = input.charAt(0).toUpperCase() + input.slice(1);
         await postData(url, { title });
         const newContexts = await fetchData(url);
@@ -111,6 +118,7 @@ function App() {
                     `Are you sure you want to delete ${contexts[id - 1].title}?`
                 )
             ) {
+                //Check if the context being deleted is still in use
                 const isInUse = () => {
                     for (let i = 0; i < tasks.length; i++) {
                         for (let l = 0; l < tasks[i].taskContexts.length; l++) {
@@ -129,7 +137,9 @@ function App() {
                     );
                     await setContexts(newContexts);
                 } else {
-                    alert("The context you want to delete is in use!");
+                    throw new Error(
+                        alert("The context you want to delete is still in use!")
+                    );
                 }
             }
         }
