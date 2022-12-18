@@ -18,6 +18,10 @@ const Tasks = ({ tasks, contexts, url, handleDelete, putData }) => {
             const index = Number(context);
             if (!Number.isInteger(index)) {
                 throw new Error(alert("Give a number please."));
+            } else if (index > contexts.length || index < 1) {
+                throw new Error(
+                    alert("Given id has no context assigned to it.")
+                );
             }
             return index;
         });

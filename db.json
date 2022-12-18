@@ -1,47 +1,51 @@
 {
-    "contexts": [
-        {
-            "id": 1,
-            "title": "Frontend course"
-        },
-        {
-            "id": 2,
-            "title": "Chores"
-        },
-        {
-            "id": 3,
-            "title": "Pets"
-        },
-        {
-            "title": "Make films",
-            "id": 4
-        }
-    ],
-    "tasks": [
-        {
-            "name": "Code",
-            "taskContexts": [1],
-            "id": 1
-        },
-        {
-            "name": "Clean",
-            "taskContexts": [2],
-            "id": 2
-        },
-        {
-            "name": "Feed cat",
-            "taskContexts": [3],
-            "id": 3
-        },
-        {
-            "name": "Make cat code",
-            "taskContexts": [1, 3],
-            "id": 4
-        },
-        {
-            "name": "Höö",
-            "taskContexts": [1],
-            "id": 5
-        }
-    ]
+  "contexts": [
+    {
+      "id": 1,
+      "title": "Frontend course"
+    },
+    {
+      "id": 2,
+      "title": "Chores"
+    },
+    {
+      "id": 3,
+      "title": "Pets"
+    },
+    {
+      "title": "Make films",
+      "id": 4
+    }
+  ],
+  "tasks": [
+    {
+      "name": "Code",
+      "taskContexts": [
+        1
+      ],
+      "id": 1
+    },
+    {
+      "name": "Clean",
+      "taskContexts": [
+        2
+      ],
+      "id": 2
+    },
+    {
+      "name": "Feed cat",
+      "taskContexts": [
+        3
+      ],
+      "id": 3
+    },
+    {
+      "name": "Make cat code",
+      "taskContexts": [
+        1,
+        3
+      ],
+      "id": 4
+    }
+  ]
 }
