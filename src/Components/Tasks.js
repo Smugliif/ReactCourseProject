@@ -26,7 +26,7 @@ const Tasks = ({ tasks, contexts, url, handleDelete, putData }) => {
     };
 
     return (
-        <div className="tasks">
+        <div>
             {tasks.map((task) => {
                 return (
                     <div key={task.id} className="task-block">

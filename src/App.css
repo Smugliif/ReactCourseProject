@@ -30,30 +30,44 @@ ul {
     width: 33%;
     text-align: center;
 }
-
 .infoview {
     text-align: center;
+}
+.contents {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.contexts {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.context-item {
+    background-color: bisque;
+    margin: 0.4em;
 }
 
 .tasks {
     background-color: lightblue;
     padding: 0.2em;
+    flex-grow: 1;
 }
 
 .task-block {
     text-align: center;
     background-color: cornsilk;
+    outline: solid;
     margin: 0.2em;
+    margin-top: 0.8em;
     padding: 0.1em;
 }
 
 .task-item {
     margin: 0.2em;
     padding: 0.1em;
-}
-
-.contexts {
-    text-align: center;
 }
 
 .buttons {

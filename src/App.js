@@ -191,24 +191,28 @@ function App() {
                                         NEW CONTEXT
                                     </button>
                                 </div>
-                                {tasks && contexts && (
-                                    <Tasks
-                                        tasks={tasks}
-                                        contexts={contexts}
-                                        url={tasksUrl}
-                                        handleDelete={handleDelete}
-                                        putData={putData}
-                                    />
-                                )}
-                                <div className="contexts">
-                                    <h1>Context List</h1>
-                                    {contexts && (
-                                        <Contexts
-                                            contexts={contexts}
-                                            url={contextsUrl}
-                                            handleDelete={handleDelete}
-                                        />
-                                    )}
+                                <div className="contents">
+                                    <section className="tasks">
+                                        {tasks && contexts && (
+                                            <Tasks
+                                                tasks={tasks}
+                                                contexts={contexts}
+                                                url={tasksUrl}
+                                                handleDelete={handleDelete}
+                                                putData={putData}
+                                            />
+                                        )}
+                                    </section>
+                                    <aside className="contexts">
+                                        <h1>Context List</h1>
+                                        {contexts && (
+                                            <Contexts
+                                                contexts={contexts}
+                                                url={contextsUrl}
+                                                handleDelete={handleDelete}
+                                            />
+                                        )}
+                                    </aside>
                                 </div>
                             </>
                         }
