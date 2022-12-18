@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 import "./App.css";
 
-import CalendarView from "./FunViewComponent";
+import FunView from "./FunViewComponent";
 import InfoView from "./Info";
 import Tasks from "./Components/Tasks";
 import Contexts from "./Components/Contexts";
@@ -154,7 +154,7 @@ function App() {
                             <Link to="/">Home</Link>
                         </li>
                         <li className="nav2">
-                            <Link to="/calendar">Calendar</Link>
+                            <Link to="/fun">Fun</Link>
                         </li>
                         <li className="nav3">
                             <Link to="/info">Info</Link>
@@ -214,7 +214,7 @@ function App() {
                         }
                     />
                     {/*Calendar View*/}
-                    <Route path="/calendar" element={<CalendarView />} />
+                    <Route path="/fun" element={<FunView />} />
                     {/*Info View*/}
                     <Route path="/info" element={<InfoView />} />
                 </Routes>
