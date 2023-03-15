@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-// import { Routes, Route, useParams, Link, useLocation } from "react-router-dom";
-import bern from "./bern.png";
+import bern from "./Images/bern.png";
 
 function Fun() {
     const [count, setCount] = useState(0);
